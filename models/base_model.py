@@ -7,7 +7,7 @@ from datetime import datetime
 class BaseModel():
     """This class contains the common attributes and methods"""
 
-    def __init__(self):
+    def __init__(self, id, created_at, updated_at):
         """Initializes the class"""
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
@@ -29,4 +29,3 @@ class BaseModel():
         the_dict["created_at"] = the_dict["created_at"].isoformat()
         the_dict["updated_at"] = the_dict["updated_at"].isoformat()
         return the_dict
-        
