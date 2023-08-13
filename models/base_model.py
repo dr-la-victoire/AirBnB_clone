@@ -29,3 +29,4 @@ class BaseModel():
         the_dict["created_at"] = the_dict["created_at"].isoformat()
         the_dict["updated_at"] = the_dict["updated_at"].isoformat()
         return the_dict
+        
