@@ -47,5 +47,6 @@ class FileStorage():
         for value in the_dict.values():
             # Get the __class__ name attached to the dictionary
             clsname = value["__class__"]
+            del value["__class__"]
             # Link to its corresponding instance
             self.new(eval(clsname)(**value))
