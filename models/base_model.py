@@ -7,7 +7,7 @@ from datetime import datetime
 class BaseModel():
     """This class contains the common attributes and methods"""
 
-    def __init__(self, id, created_at, updated_at):
+    def __init__(self):
         """Initializes the class"""
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
