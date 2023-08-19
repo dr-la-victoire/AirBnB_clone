@@ -37,9 +37,15 @@ div.locations {
 
 div.locations h3, div.amenities h3 {
     font-weight: 600;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-bottom: 0px;
 }
 
 div.locations h4, div.amenities h4 {
     font-weight: 400;
     font-size: 14px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 30px;
 }
