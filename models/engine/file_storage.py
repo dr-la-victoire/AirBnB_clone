@@ -42,16 +42,25 @@ class FileStorage():
 
     def reload(self):
         """Deserializes the JSON file to a dictionary"""
-        # Check if the file exists
-        if not os.path.isfile(FileStorage.__file_path):
-            return
-        # Open the file for reading
-        with open(FileStorage.__file_path, "r", encoding="utf-8") as doc:
-            # Deserialize
-            the_dict = json.load(doc)
-        # Get the values of the dictionary
-        for value in the_dict.values():
-            # Get the __class__ name attached to the dictionary
-            clsname = value["__class__"]
-            # Link to its corresponding instance
-            self.new(eval(clsname)(**value))
+        classes = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "Amenity": Amenity,
+            "City": City,
+            "Place": Place,
+            "Review": Review,
+            "State": State
+            }
+
+        try:
+            if not os.path.exists(FileStorage.__file_path):
+                return
+            with open(FileStorage.__file_path, encoding="utf-8") as j_str:
+                the_dict = json.load(j_str)
+            # Getting the values of the keys in the the_dict dictionary
+            for value in the_dict.values():
+                class_name = value["__class__"]
+                class_obj = classes[class_name]
+                self.new(class_obj(**value))
+        except FileNotFoundError:
+            pass
